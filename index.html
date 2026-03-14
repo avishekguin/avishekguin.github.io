@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Avishek Guin | Synthetic Organic Chemist | MPI Kohlenforschung</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1814;
+    --ink-soft: #4a4640;
+    --ink-muted: #8a8480;
+    --paper: #faf8f4;
+    --paper-warm: #f3efe8;
+    --accent: #2d5a3d;
+    --accent-light: #4a8a5f;
+    --accent-pale: #e8f0eb;
+    --gold: #b8962e;
+    --gold-pale: #f7f0dc;
+    --border: #dedad4;
+    --font-serif: 'EB Garamond', Georgia, serif;
+    --font-sans: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,244,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+  }
+  .nav-name {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  /* ── PAGE SECTIONS ── */
+  section { display: none; padding-top: 60px; }
+  section.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .hero-left {
+    padding: 80px 48px 80px 72px;
+  }
+  .hero-right {
+    background: var(--accent);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-name {
+    font-family: var(--font-serif);
+    font-size: clamp(38px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-title {
+    font-size: 14px;
+    color: var(--ink-muted);
+    letter-spacing: 0.03em;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+  .hero-bio {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .hero-bio strong { color: var(--ink); font-weight: 500; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 11px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-light); }
+  .btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    padding: 10px 28px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+    background: transparent;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* hero right panel */
+  .hero-panel {
+    position: relative; z-index: 1;
+    width: 100%;
+  }
+  .affil-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .affil-card:last-child { margin-bottom: 0; }
+  .affil-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .affil-name {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: white;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .affil-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+  }
+
+  /* news ticker */
+  .news-strip {
+    background: var(--gold-pale);
+    border-top: 1px solid #e8d8a0;
+    border-bottom: 1px solid #e8d8a0;
+    padding: 10px 72px;
+    display: flex; gap: 16px; align-items: center;
+  }
+  .news-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .news-items { display: flex; gap: 40px; overflow-x: auto; }
+  .news-item {
+    font-size: 13px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .news-item::before { content: '◆'; font-size: 6px; color: var(--gold); }
+  .news-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+  }
+
+  /* ── ABOUT ── */
+  .page-wrap { max-width: 960px; margin: 0 auto; padding: 72px 48px; }
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .page-rule {
+    width: 48px; height: 2px;
+    background: var(--accent);
+    margin-bottom: 48px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+  .profile-photo-box {
+    position: sticky; top: 80px;
+  }
+  .profile-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-muted);
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .profile-links { display: flex; flex-direction: column; gap: 8px; }
+  .profile-link {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .profile-link:hover { color: var(--accent); }
+  .profile-link-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .profile-link:hover .profile-link-dot { background: var(--accent); }
+
+  .bio-text {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  .bio-body {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 48px;
+  }
+  .bio-body p { margin-bottom: 18px; }
+  .bio-body strong { color: var(--ink); font-weight: 500; }
+
+  /* timeline */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 48px; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .tl-item:first-child { border-top: 1px solid var(--border); }
+  .tl-year {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+    padding-top: 3px;
+  }
+  .tl-role {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .tl-place {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 2px;
+  }
+  .tl-mentor {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+  .tl-mentor a { color: var(--accent); text-decoration: none; }
+  .tl-mentor a:hover { text-decoration: underline; }
+
+  /* awards */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .award-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 14px 16px;
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+  }
+  .award-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .award-text { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+  .award-text strong { color: var(--ink); font-weight: 500; display: block; font-size: 13px; }
+
+  /* ── RESEARCH ── */
+  .research-intro {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    line-height: 1.75;
+    color: var(--ink);
+    max-width: 720px;
+    margin-bottom: 56px;
+  }
+  .research-grid { display: flex; flex-direction: column; gap: 0; }
+  .research-pillar {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 32px;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .research-pillar:first-child { border-top: 1px solid var(--border); }
+  .pillar-num {
+    font-family: var(--font-serif);
+    font-size: 52px;
+    color: var(--border);
+    line-height: 1;
+    font-weight: 400;
+    padding-top: 4px;
+  }
+  .pillar-content {}
+  .pillar-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .pillar-title {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .pillar-body {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    max-width: 640px;
+    margin-bottom: 20px;
+  }
+  .pillar-keywords {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .keyword {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    background: var(--accent-pale);
+    padding: 4px 10px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-filter {
+    display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap;
+  }
+  .filter-btn {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .pub-section-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 40px 0 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .pub-section-head::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .pub-section-head:first-of-type { margin-top: 0; }
+
+  .pub-item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .pub-item:first-of-type { border-top: 1px solid var(--border); }
+  .pub-num {
+    font-family: var(--font-mono);
+    font-size: 22px;
+    color: var(--border);
+    font-weight: 400;
+    line-height: 1;
+    padding-top: 4px;
+    text-align: right;
+  }
+  .pub-content {}
+  .pub-title {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .pub-title a { color: inherit; text-decoration: none; }
+  .pub-title a:hover { color: var(--accent); }
+  .pub-authors {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .pub-authors .me { color: var(--ink-soft); font-weight: 500; }
+  .pub-authors .corr::after { content: '*'; color: var(--accent); font-size: 11px; vertical-align: super; }
+  .pub-journal {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .pub-journal strong { font-style: normal; font-weight: 500; color: var(--ink); }
+  .pub-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    text-transform: uppercase;
+  }
+  .badge-nature { background: #e8f4f0; color: #1a6b52; }
+  .badge-hot { background: #fef3e2; color: #b8620a; }
+  .badge-cover { background: #f0e8f8; color: #6b2d8b; }
+  .badge-corr { background: var(--accent-pale); color: var(--accent); }
+  .badge-invited { background: #e8f0fb; color: #2d4a8b; }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .contact-intro {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .contact-block { margin-bottom: 32px; }
+  .contact-block-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .contact-block-val {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .contact-block-val a { color: var(--accent); text-decoration: none; }
+  .contact-block-val a:hover { text-decoration: underline; }
+  .social-row { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+  .social-btn {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .contact-right {
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    padding: 40px;
+  }
+  .contact-right h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .contact-right p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .contact-right ul {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .contact-right li {
+    font-size: 13px;
+    color: var(--ink-soft);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .contact-right li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 12px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper);
+  }
+  footer p {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+  }
+  .footer-name {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-left > *:nth-child(6) { animation-delay: 0.6s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: auto; padding: 40px 24px; }
+    .hero-left { padding: 60px 24px 40px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .awards-grid { grid-template-columns: 1fr; }
+    .page-wrap { padding: 48px 24px; }
+    footer { flex-direction: column; gap: 12px; padding: 24px; }
+    .news-strip { padding: 10px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-name" href="#" onclick="showSection('home')">Dr. Avishek Guin</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showSection('home')" class="active" id="nav-home">Home</a></li>
+    <li><a href="#" onclick="showSection('about')" id="nav-about">About</a></li>
+    <li><a href="#" onclick="showSection('research')" id="nav-research">Research</a></li>
+    <li><a href="#" onclick="showSection('publications')" id="nav-publications">Publications</a></li>
+    <li><a href="#" onclick="showSection('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     HOME
+══════════════════════════════════════════════ -->
+<section id="home" class="active">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Synthetic Organic Chemistry</div>
+      <h1 class="hero-name">Avishek <em>Guin</em></h1>
+      <p class="hero-title">Postdoctoral Fellow &nbsp;·&nbsp; Max-Planck-Institut für Kohlenforschung, Germany</p>
+      <p class="hero-bio">
+        I am a synthetic organic chemist working on <strong>asymmetric catalysis</strong> at the interface of 
+        <strong>photoredox chemistry</strong> and <strong>strained-ring synthesis</strong>. 
+        I completed my Ph.D. at the <strong>Indian Institute of Science, Bangalore</strong>, 
+        and currently hold a postdoctoral position in the group of 
+        <strong>Nobel Laureate Prof. Benjamin List</strong> at MPI Kohlenforschung, Mülheim an der Ruhr.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#" onclick="showSection('research')">Research Themes</a>
+        <a class="btn-secondary" href="#" onclick="showSection('publications')">Publications</a>
+        <a class="btn-secondary" href="https://d00e1d4c-f63a-4648-8da7-cf6f615b9828.filesusr.com/ugd/31aa7e_c85a386a5e9743c9ad9b30922ab008d8.pdf" target="_blank">Download CV</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-panel">
+        <div class="affil-card">
+          <div class="affil-label">Current Position</div>
+          <div class="affil-name">Max-Planck-Institut für Kohlenforschung</div>
+          <div class="affil-sub">Group of Nobel Laureate Prof. Benjamin List &nbsp;·&nbsp; Mülheim an der Ruhr, Germany &nbsp;·&nbsp; 2024–present</div>
+        </div>
+        <div class="affil-card">
+          <div class="affil-label">Doctoral Training</div>
+          <div class="affil-name">Indian Institute of Science</div>
+          <div class="affil-sub">Group of Prof. A. T. Biju &nbsp;·&nbsp; Department of Organic Chemistry, Bangalore &nbsp;·&nbsp; 2018–2023</div>
+        </div>
+        <div class="affil-card">
+          <div class="affil-label">Master's Training</div>
+          <div class="affil-name">Indian Institute of Technology Kharagpur</div>
+          <div class="affil-sub">M.Sc. Chemistry &nbsp;·&nbsp; 2016–2018</div>
+        </div>
+        <div class="affil-card" style="background:rgba(184,150,46,0.12); border-color:rgba(184,150,46,0.3);">
+          <div class="affil-label" style="color:rgba(255,220,100,0.8);">Latest Publication</div>
+          <div class="affil-name" style="font-size:14px; line-height:1.4;">Organocatalytic Regio- and Stereoselective Cyclopropanation of Olefins</div>
+          <div class="affil-sub">Nature Catalysis, 2025, 8, 487–494</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- News strip -->
+  <div class="news-strip">
+    <span class="news-label">Updates</span>
+    <div class="news-items">
+      <span class="news-item"><span class="news-date">Mar 2025</span> Paper published in <em>Nature Catalysis</em> — organocatalytic cyclopropanation via ACPC</span>
+      <span class="news-item"><span class="news-date">Aug 2024</span> Paper published in <em>Angew. Chem. Int. Ed.</em> — BCB (4+3) annulation</span>
+      <span class="news-item"><span class="news-date">Jul 2024</span> Paper published in <em>Chem. Sci.</em> — ene reactions of BCBs (corresponding author)</span>
+      <span class="news-item"><span class="news-date">Apr 2024</span> Joined the List group at MPI Kohlenforschung</span>
+      <span class="news-item"><span class="news-date">Jan 2024</span> Paper published in <em>J. Am. Chem. Soc.</em> — Alder-ene reactions of BCBs</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════════ -->
+<section id="about">
+<div class="page-wrap">
+  <h2 class="page-title">About</h2>
+  <div class="page-rule"></div>
+
+  <div class="about-grid">
+    <div class="profile-photo-box">
+      <div class="profile-photo">
+        <img src="profile.jpg" alt="Dr. Avishek Guin" onerror="this.parentNode.innerHTML='[Profile photo]'"/>
+      </div>
+      <div class="profile-links">
+        <a class="profile-link" href="https://scholar.google.com/citations?user=3n6ARvoAAAAJ&hl=en" target="_blank">
+          <span class="profile-link-dot"></span> Google Scholar
+        </a>
+        <a class="profile-link" href="https://www.researchgate.net/profile/Avishek-Guin-2" target="_blank">
+          <span class="profile-link-dot"></span> ResearchGate
+        </a>
+        <a class="profile-link" href="https://www.linkedin.com/in/avishek-guin-82001312a/" target="_blank">
+          <span class="profile-link-dot"></span> LinkedIn
+        </a>
+        <a class="profile-link" href="https://twitter.com/avishek_guin" target="_blank">
+          <span class="profile-link-dot"></span> Twitter / X
+        </a>
+        <a class="profile-link" href="https://d00e1d4c-f63a-4648-8da7-cf6f615b9828.filesusr.com/ugd/31aa7e_c85a386a5e9743c9ad9b30922ab008d8.pdf" target="_blank">
+          <span class="profile-link-dot"></span> Curriculum Vitae
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <p class="bio-text">
+        "My research is driven by a deep curiosity about how strained molecules can be harnessed as 
+        versatile platforms for building complex, three-dimensional chemical space."
+      </p>
+
+      <div class="bio-body">
+        <p>
+          Dr. Avishek Guin is a postdoctoral fellow at the <strong>Max-Planck-Institut für Kohlenforschung</strong> 
+          in Mülheim an der Ruhr, Germany, working in the laboratory of Nobel Laureate 
+          <strong>Prof. Dr. Benjamin List</strong>. His postdoctoral research focuses on 
+          <strong>asymmetric photocatalysis</strong>, with a particular emphasis on developing new 
+          enantioselective transformations of strained organic intermediates using confined chiral catalysts.
+        </p>
+        <p>
+          He received his Ph.D. in Organic Chemistry from the <strong>Indian Institute of Science (IISc), 
+          Bangalore</strong>, where he worked under the mentorship of <strong>Prof. A. T. Biju</strong>. 
+          During his doctoral studies, he developed a broad and productive research program centred on 
+          the synthetic utilisation of strained organic intermediates — including <strong>arynes</strong>, 
+          <strong>donor–acceptor cyclopropanes</strong>, and <strong>bicyclo[1.1.0]butanes (BCBs)</strong> 
+          — for the construction of complex carbocyclic and heterocyclic architectures. He was supported 
+          by the prestigious <strong>Prime Minister's Research Fellowship (PMRF)</strong>, one of India's 
+          most competitive doctoral fellowships.
+        </p>
+        <p>
+          Prior to his doctoral training, he completed his <strong>M.Sc. in Chemistry from IIT Kharagpur</strong> 
+          and his <strong>B.Sc. from Visva Bharati University</strong>. He has qualified multiple 
+          national competitive examinations including CSIR-NET (JRF), GATE, and JAM, consistently 
+          ranking among the top candidates nationally.
+        </p>
+        <p>
+          His research has resulted in over <strong>22 publications</strong> in leading journals including 
+          <em>Nature Catalysis</em>, <em>Journal of the American Chemical Society</em>, 
+          <em>Chemical Science</em>, <em>Angewandte Chemie</em>, and <em>Organic Letters</em>, 
+          as well as chapters in edited volumes from <strong>Wiley-VCH</strong>. He has contributed as 
+          <strong>corresponding author</strong> on several publications, reflecting an early independence 
+          in research direction that is uncommon at the doctoral stage.
+        </p>
+      </div>
+
+      <div class="section-label">Academic Trajectory</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2024–present</div>
+          <div>
+            <div class="tl-role">Postdoctoral Fellow</div>
+            <div class="tl-place">Max-Planck-Institut für Kohlenforschung, Mülheim an der Ruhr, Germany</div>
+            <div class="tl-mentor">Mentor: <a href="https://www.kofo.mpg.de/en/research/homogeneous-catalysis" target="_blank">Prof. Dr. Dr. h.c. Benjamin List</a> (Nobel Prize in Chemistry, 2021)</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Jan–Mar 2024</div>
+          <div>
+            <div class="tl-role">Research Associate</div>
+            <div class="tl-place">Department of Organic Chemistry, Indian Institute of Science, Bangalore</div>
+            <div class="tl-mentor">Mentor: <a href="https://atbiju.in/" target="_blank">Prof. A. T. Biju</a></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2018–2023</div>
+          <div>
+            <div class="tl-role">Ph.D. in Organic Chemistry</div>
+            <div class="tl-place">Indian Institute of Science, Bangalore, India</div>
+            <div class="tl-mentor">Mentor: <a href="https://atbiju.in/" target="_blank">Prof. A. T. Biju</a> &nbsp;·&nbsp; PMRF Fellow (2020–2023)</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2016–2018</div>
+          <div>
+            <div class="tl-role">M.Sc. in Chemistry</div>
+            <div class="tl-place">Indian Institute of Technology Kharagpur, India</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2013–2016</div>
+          <div>
+            <div class="tl-role">B.Sc. in Chemistry</div>
+            <div class="tl-place">Visva Bharati University, India &nbsp;·&nbsp; DST INSPIRE Scholarship (2013–2018)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label">Awards &amp; Honours</div>
+      <div class="awards-grid">
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>PMRF Fellowship (2020–2023)</strong>
+            Prime Minister's Research Fellowship — India's most prestigious doctoral fellowship, awarded to top 300 PhD students nationally
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>CSIR-NET JRF (June 2017) — Rank 32</strong>
+            National Eligibility Test for Junior Research Fellowship in Chemical Sciences
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>CSIR-NET JRF (Dec 2016) — Rank 18</strong>
+            Qualified in consecutive attempts with top-18 national ranking
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>GATE 2018 — Rank 183</strong>
+            Graduate Aptitude Test in Engineering, Chemistry
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>JAM 2016 — Rank 63</strong>
+            Joint Admission Test for M.Sc., all-India rank 63
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>DST INSPIRE Scholarship (2013–2018)</strong>
+            Department of Science &amp; Technology scholarship for top science undergraduates
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     RESEARCH
+══════════════════════════════════════════════ -->
+<section id="research">
+<div class="page-wrap">
+  <h2 class="page-title">Research</h2>
+  <div class="page-rule"></div>
+
+  <p class="research-intro">
+    Our research programme sits at the intersection of <em>asymmetric catalysis</em>, 
+    <em>photoredox chemistry</em>, and the <em>synthetic chemistry of strained molecules</em>. 
+    We are motivated by the challenge of developing new catalytic methods that enable efficient, 
+    selective access to three-dimensional molecular architectures of relevance to medicine, 
+    agriculture, and materials science.
+  </p>
+
+  <div class="research-grid">
+
+    <div class="research-pillar">
+      <div class="pillar-num">I</div>
+      <div class="pillar-content">
+        <div class="pillar-tag">Core Theme</div>
+        <h3 class="pillar-title">Asymmetric Photocatalysis</h3>
+        <p class="pillar-body">
+          The merger of photoredox activation with asymmetric catalysis offers a powerful strategy 
+          for generating complex chiral molecules under mild, sustainable conditions. A central 
+          challenge in this field is achieving precise stereocontrol over the highly reactive open-shell 
+          intermediates generated by single-electron transfer events. Our work explores new catalytic 
+          strategies — drawing on ion-pairing interactions, hydrogen-bonding networks, and confined 
+          molecular environments — to impose enantioselectivity on photochemically generated radical 
+          and radical-ion intermediates. We are particularly interested in transformations that are 
+          either inaccessible or impractical by classical two-electron pathways.
+        </p>
+        <div class="pillar-keywords">
+          <span class="keyword">Photoredox catalysis</span>
+          <span class="keyword">Radical ion intermediates</span>
+          <span class="keyword">Enantioselective synthesis</span>
+          <span class="keyword">Ion-pair catalysis</span>
+          <span class="keyword">Visible light</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-pillar">
+      <div class="pillar-num">II</div>
+      <div class="pillar-content">
+        <div class="pillar-tag">Core Theme</div>
+        <h3 class="pillar-title">Strained-Ring Synthesis &amp; Reactivity</h3>
+        <p class="pillar-body">
+          Strained carbocyclic intermediates — including bicyclo[1.1.0]butanes (BCBs), 
+          donor–acceptor cyclopropanes, and related systems — represent a uniquely versatile 
+          class of reactive building blocks. Their inherent ring strain drives highly selective 
+          bond-breaking events, enabling the construction of complex cyclic architectures from 
+          simple precursors. Our group is interested in developing new catalytic methods that 
+          harness the distinctive reactivity of these species, with an emphasis on achieving 
+          stereochemical control and accessing scaffolds with pharmaceutical relevance. 
+          The growing importance of sp³-rich, three-dimensional molecular fragments in 
+          modern drug discovery provides a compelling motivation for this programme.
+        </p>
+        <div class="pillar-keywords">
+          <span class="keyword">Bicyclo[1.1.0]butanes</span>
+          <span class="keyword">Cyclopropanes</span>
+          <span class="keyword">Strain-release</span>
+          <span class="keyword">sp³-rich scaffolds</span>
+          <span class="keyword">Drug-like molecules</span>
+          <span class="keyword">Cycloadditions</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-pillar">
+      <div class="pillar-num">III</div>
+      <div class="pillar-content">
+        <div class="pillar-tag">Core Theme</div>
+        <h3 class="pillar-title">Catalytic Methods for Medicinal &amp; Agrochemical Applications</h3>
+        <p class="pillar-body">
+          Underpinning both of the above themes is a commitment to developing chemistry 
+          that addresses real-world synthetic challenges. Enantiopure cyclopropane-, 
+          cyclobutane-, and BCB-containing motifs appear in numerous biologically active 
+          compounds and are of growing interest as bioisosteric replacements for aromatic 
+          rings in drug design. We aim to develop practical, scalable catalytic routes to 
+          such building blocks, with collaborations in medicinal chemistry and the 
+          pharmaceutical industry as a long-term goal. The rich biodiversity of the 
+          Indian subcontinent — and the depth of India's pharmaceutical manufacturing 
+          sector — provide a particularly compelling context for this work.
+        </p>
+        <div class="pillar-keywords">
+          <span class="keyword">Bioisosteres</span>
+          <span class="keyword">Chiral building blocks</span>
+          <span class="keyword">Natural products</span>
+          <span class="keyword">API synthesis</span>
+          <span class="keyword">Green chemistry</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PUBLICATIONS
+══════════════════════════════════════════════ -->
+<section id="publications">
+<div class="page-wrap">
+  <h2 class="page-title">Publications</h2>
+  <div class="page-rule"></div>
+
+  <div class="pub-filter">
+    <button class="filter-btn active">All (22)</button>
+    <button class="filter-btn">Postdoc</button>
+    <button class="filter-btn">Ph.D.</button>
+    <button class="filter-btn">Book Chapters</button>
+  </div>
+
+  <!-- POSTDOC -->
+  <div class="pub-section-head">Postdoctoral Research — MPI Kohlenforschung &amp; IISc Bangalore</div>
+
+  <div class="pub-item">
+    <div class="pub-num">22</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://www.nature.com/articles/s41929-025-01340-7" target="_blank">Organocatalytic Regio- and Stereoselective Cyclopropanation of Olefins</a></div>
+      <div class="pub-authors">Zhu, C.; Das, S.; <span class="me">Guin, A.</span>; De, C. K.; List, B.*</div>
+      <div class="pub-journal"><em>Nature Catalysis</em> <strong>2025</strong>, 8, 487–494</div>
+      <div class="pub-badges">
+        <span class="badge badge-nature">Nature Catalysis</span>
+        <span class="badge badge-hot">ACPC Concept</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">21</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://onlinelibrary.wiley.com/doi/10.1002/anie.202408610" target="_blank">Lewis Acid-Catalyzed Unusual (4+3) Annulation of para-Quinone Methides with Bicyclobutanes: Access to Oxabicyclo[4.1.1]octanes</a></div>
+      <div class="pub-authors">Deswal, S.; <span class="me">Guin, A.</span>; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Angewandte Chemie International Edition</em> <strong>2024</strong>, 63, e202408610</div>
+      <div class="pub-badges"><span class="badge badge-hot">Angew. Chem.</span></div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">20</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.rsc.org/en/content/articlelanding/2024/sc/d4sc02194k" target="_blank">Lewis Acid-Catalyzed Diastereoselective Ene Reaction of Thioindolinones/Thiolactams with Bicyclobutanes</a></div>
+      <div class="pub-authors"><span class="me corr">Guin, A.</span>; Deswal, S.; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Chemical Science</em> <strong>2024</strong>, 15, 12473–12479</div>
+      <div class="pub-badges">
+        <span class="badge badge-corr">Corresponding Author</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">19</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.rsc.org/en/content/articlelanding/2024/0b/d4ob00053f" target="_blank">Lewis Acid-Catalyzed One-Pot Thioalkenylation of Donor-Acceptor Cyclopropanes Using in situ Generated Dithiocarbamates and Propiolates</a></div>
+      <div class="pub-authors">Harikumar, S.; Kandy, L. T. K.; <span class="me corr">Guin, A.</span>; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Organic &amp; Biomolecular Chemistry</em> <strong>2024</strong>, 22, 1834–1838</div>
+      <div class="pub-badges">
+        <span class="badge badge-corr">Corresponding Author</span>
+        <span class="badge badge-invited">Invited — Prof. Sukh Dev Issue</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">18</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.acs.org/doi/10.1021/jacs.3c13080" target="_blank">Stereoselective Alder-ene Reactions of Bicyclo[1.1.0]butanes: Facile Synthesis of Cyclopropyl- and Aryl-substituted Cyclobutenes</a></div>
+      <div class="pub-authors">Dasgupta, A.; Bhattacharjee, S.; Tong, Z.; <span class="me">Guin, A.</span>; McNamee, R.; Christensen, K.; Biju, A. T.*; Anderson, E.*</div>
+      <div class="pub-journal"><em>Journal of the American Chemical Society</em> <strong>2024</strong>, 146, 1196–1203</div>
+      <div class="pub-badges"><span class="badge badge-nature">JACS</span></div>
+    </div>
+  </div>
+
+  <!-- PhD -->
+  <div class="pub-section-head">Doctoral Research — IISc Bangalore (Ph.D.)</div>
+
+  <div class="pub-item">
+    <div class="pub-num">17</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.rsc.org/en/content/articlelanding/2023/sc/d3sc01373a" target="_blank">Lewis Acid-Catalyzed Diastereoselective Carbofunctionalization of Bicyclobutanes Employing Naphthols</a></div>
+      <div class="pub-authors"><span class="me">Guin, A.</span>; Bhattacharjee, S.; Harariya, M. S.; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Chemical Science</em> <strong>2023</strong>, 14, 6585–6591</div>
+      <div class="pub-badges"><span class="badge badge-hot">Editor's Choice — Ning Jiao</span></div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">16</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.acs.org/doi/10.1021/acs.orglett.3c00180" target="_blank">Benzotriazole-Triggered Three-Component Lewis Acid-Catalyzed Ring-Opening 1,3-Aminofunctionalization of Donor–Acceptor Cyclopropanes</a></div>
+      <div class="pub-authors">Deswal, S.; <span class="me">Guin, A.</span>; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Organic Letters</em> <strong>2023</strong>, 25, 1643–1648</div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">14</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.acs.org/doi/10.1021/acs.orglett.2c01379" target="_blank">Synthesis of Trisubstituted Oxazoles via Aryne Induced [2,3] Sigmatropic Rearrangement-Annulation Cascade</a></div>
+      <div class="pub-authors">Gaykar, R. N.; Deswal, S.; <span class="me">Guin, A.</span>; Bhattacharjee, S.; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Organic Letters</em> <strong>2022</strong>, 24, 4145–4150</div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">13</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.acs.org/doi/10.1021/acs.joc.2c00447" target="_blank">Ring-Opening 1,3-Carbothiolation of Donor−Acceptor Cyclopropanes Using Alkyl Halides and In Situ Generated Dithiocarbamates</a></div>
+      <div class="pub-authors"><span class="me">Guin, A.</span>; Deswal, S.; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Journal of Organic Chemistry</em> <strong>2022</strong>, 87, 6504–6513</div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">11</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.acs.org/doi/10.1021/acs.orglett.1c02662" target="_blank">Three-Component, Diastereoselective [6+3] Annulation of Tropone, Imino Esters and Arynes</a></div>
+      <div class="pub-authors"><span class="me">Guin, A.</span>; Gaykar, R. N.; Deswal, S.; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Organic Letters</em> <strong>2021</strong>, 23, 7456–7461</div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">10</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.202102005" target="_blank">Transition-Metal-Free C2-Functionalization of Pyridines via Aryne Three-Component Coupling</a></div>
+      <div class="pub-authors"><span class="me">Guin, A.</span>; Bhattacharjee, S.; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Chemistry – A European Journal</em> <strong>2021</strong>, 27, 13864–13869</div>
+      <div class="pub-badges"><span class="badge badge-hot">Hot Paper</span></div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-num">5</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.acs.org/doi/10.1021/acs.orglett.0c00483" target="_blank">Lewis Acid-Catalyzed Ring-Opening 1,3-Aminothiolation of Donor-Acceptor Cyclopropanes Using Sulfenamides</a></div>
+      <div class="pub-authors"><span class="me">Guin, A.</span>; Rathod, T.; Gaykar, R. N.; Roy, T.; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Organic Letters</em> <strong>2020</strong>, 22, 2276–2280</div>
+    </div>
+  </div>
+
+  <!-- Book chapters note -->
+  <div class="pub-section-head">Book Chapters (2 chapters, Wiley-VCH)</div>
+  <div class="pub-item">
+    <div class="pub-num">15</div>
+    <div class="pub-content">
+      <div class="pub-title">Ring-Opening 1,3-Difunctionalization of Donor-Acceptor Cyclopropanes</div>
+      <div class="pub-authors"><span class="me">Guin, A.</span>; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Donor-Acceptor Cyclopropanes in Organic Synthesis</em>, Chapter 6; Wiley-VCH, <strong>2023</strong></div>
+      <div class="pub-badges"><span class="badge badge-invited">Book Chapter</span></div>
+    </div>
+  </div>
+  <div class="pub-item">
+    <div class="pub-num">8</div>
+    <div class="pub-content">
+      <div class="pub-title">Hetarynes, Cycloalkynes and Related Intermediates</div>
+      <div class="pub-authors"><span class="me">Guin, A.</span>; Bhattacharjee, S.; Biju, A. T.*</div>
+      <div class="pub-journal"><em>Modern Aryne Chemistry</em>, Chapter 9; Wiley-VCH, <strong>2021</strong></div>
+      <div class="pub-badges"><span class="badge badge-invited">Book Chapter</span></div>
+    </div>
+  </div>
+
+  <!-- MSc -->
+  <div class="pub-section-head">Master's Research — IIT Kharagpur</div>
+  <div class="pub-item">
+    <div class="pub-num">1</div>
+    <div class="pub-content">
+      <div class="pub-title"><a href="https://pubs.rsc.org/-/content/articlelanding/2018/ob/c8ob02875c" target="_blank">Formal [4+2] Benzannulation of 2-Alkenyl Indoles with Aldehydes: A Route to Structurally Diverse Carbazoles and Bis-carbazoles</a></div>
+      <div class="pub-authors">Banerjee, A.; <span class="me">Guin, A.</span>; Saha, S.; Mondal, A.; Maji, M. S.*</div>
+      <div class="pub-journal"><em>Organic &amp; Biomolecular Chemistry</em> <strong>2019</strong>, 17, 1822–1826</div>
+    </div>
+  </div>
+
+  <p style="margin-top:32px; font-size:13px; color:var(--ink-muted); font-style:italic;">
+    * denotes corresponding author. Complete publication list available on 
+    <a href="https://scholar.google.com/citations?user=3n6ARvoAAAAJ&hl=en" target="_blank" style="color:var(--accent);">Google Scholar</a>.
+  </p>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════ -->
+<section id="contact">
+<div class="page-wrap">
+  <h2 class="page-title">Contact</h2>
+  <div class="page-rule"></div>
+
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">
+        I am always happy to hear from colleagues, prospective collaborators, 
+        and motivated students interested in synthetic organic chemistry.
+      </p>
+
+      <div class="contact-block">
+        <div class="contact-block-label">Current Address</div>
+        <div class="contact-block-val">
+          Max-Planck-Institut für Kohlenforschung<br/>
+          Kaiser-Wilhelm-Platz 1<br/>
+          45470 Mülheim an der Ruhr, Germany
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <div class="contact-block-label">Email</div>
+        <div class="contact-block-val">
+          <a href="/cdn-cgi/l/email-protection#d4b3a1bdba94bfbbb2bbfab9a4b3fab0b1"><span class="__cf_email__" data-cfemail="caadbfa3a48aa1a5aca5e4a7baade4aeaf">[email&#160;protected]</span></a>
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <div class="contact-block-label">Academic Profiles</div>
+        <div class="contact-block-val">
+          <a href="https://scholar.google.com/citations?user=3n6ARvoAAAAJ&hl=en" target="_blank">Google Scholar</a> &nbsp;·&nbsp;
+          <a href="https://www.researchgate.net/profile/Avishek-Guin-2" target="_blank">ResearchGate</a> &nbsp;·&nbsp;
+          <a href="https://www.linkedin.com/in/avishek-guin-82001312a/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <a class="social-btn" href="https://scholar.google.com/citations?user=3n6ARvoAAAAJ&hl=en" target="_blank">Google Scholar</a>
+        <a class="social-btn" href="https://twitter.com/avishek_guin" target="_blank">Twitter / X</a>
+        <a class="social-btn" href="https://www.linkedin.com/in/avishek-guin-82001312a/" target="_blank">LinkedIn</a>
+        <a class="social-btn" href="https://d00e1d4c-f63a-4648-8da7-cf6f615b9828.filesusr.com/ugd/31aa7e_c85a386a5e9743c9ad9b30922ab008d8.pdf" target="_blank">Download CV</a>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <h3>Prospective Students &amp; Collaborators</h3>
+      <p>
+        I will be establishing an independent research group in the near future. 
+        If you are a motivated student or postdoc interested in joining a research 
+        programme at the interface of asymmetric catalysis, photoredox chemistry, 
+        and strained-ring synthesis, I encourage you to get in touch.
+      </p>
+      <p>I am particularly interested in hearing from:</p>
+      <ul>
+        <li>Ph.D. students with a strong background in synthetic organic chemistry</li>
+        <li>Postdoctoral candidates with expertise in asymmetric catalysis or photoredox methods</li>
+        <li>Academic and industrial collaborators working on medicinal chemistry or pharmaceutical synthesis</li>
+        <li>Colleagues interested in bilateral research collaborations (Indo-German, Indo-European)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Dr. Avishek Guin</span>
+  <p>Postdoctoral Fellow · Max-Planck-Institut für Kohlenforschung · Mülheim an der Ruhr, Germany</p>
+  <p>Updated March 2026</p>
+</footer>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('section').forEach(function(s) {
+    s.classList.remove('active');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.classList.remove('active');
+  });
+  var sec = document.getElementById(id);
+  if (sec) sec.classList.add('active');
+  var nav = document.getElementById('nav-' + id);
+  if (nav) nav.classList.add('active');
+  window.scrollTo(0, 0);
+  return false;
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = this.id.replace('nav-', '');
+      showSection(id);
+    });
+  });
+});
+</script>
+</body>
+</html>
